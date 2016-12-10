@@ -1,0 +1,2 @@
+File	N.modules	Modularity	P.Null1	P.Null2
+football-matrizbinaria.txt	7	0.600642	0.000000	0.000000

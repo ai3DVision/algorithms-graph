@@ -1,0 +1,2 @@
+File	N.modules	Modularity	P.Null1	P.Null2
+polbooks-matrizbinaria.txt	5	0.527237	0.000000	0.000000

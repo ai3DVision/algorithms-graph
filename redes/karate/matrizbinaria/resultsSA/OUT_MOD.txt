@@ -1,0 +1,2 @@
+File	N.modules	Modularity	P.Null1	P.Null2
+karate-matrizbinaria.txt	4	0.419790	0.000000	0.000000
