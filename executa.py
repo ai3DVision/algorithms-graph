@@ -17,10 +17,12 @@ args = parser.parse_args()
 
 G = graph.load_adjacencylist(args.input,undirected=True)
 
-print "Com arestas:"
+print G.printAdjList()
 
-algoritmos.montaBolaComArestasUltimaCamada(G,3,args.deepth).printAdjList()
+#print "Com arestas:"
 
-print "Sem arestas:"
+#algoritmos.montaBolaComArestasUltimaCamada(G,3,args.deepth).printAdjList()
 
-algoritmos.montaBolaSemArestasUltimaCamada(G,3,args.deepth).printAdjList()
+#print "Sem arestas:"
+
+#algoritmos.montaBolaSemArestasUltimaCamada(G,3,args.deepth).printAdjList()

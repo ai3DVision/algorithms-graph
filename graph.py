@@ -129,7 +129,13 @@ class Graph(defaultdict):
 
   def number_of_nodes(self):
     "Returns the number of nodes in the graph"
-    return order()  
+    return order() 
+
+  def gToDict(self):
+    d = {}
+    for k,v in self.iteritems():
+      d[k] = v
+    return d
 
   def printAdjList(self):
     for key,value in self.iteritems():
@@ -163,7 +169,6 @@ def parse_adjacencylist_unchecked(f):
   for l in f:
     if l and l[0] != "#":
       adjlist.extend([[int(x) for x in l.strip().split()]])
-  
   return adjlist
 
 def load_adjacencylist(file_, undirected=False, chunksize=10000, unchecked=True):
@@ -188,19 +193,19 @@ def load_adjacencylist(file_, undirected=False, chunksize=10000, unchecked=True)
   
   t1 = time()
 
-  logger.info('Parsed {} edges with {} chunks in {}s'.format(total, idx, t1-t0))
+  print ('Parsed {} edges with {} chunks in {}s'.format(total, idx, t1-t0))
 
   t0 = time()
   G = convert_func(adjlist)
   t1 = time()
 
-  logger.info('Converted edges to graph in {}s'.format(t1-t0))
+  print ('Converted edges to graph in {}s'.format(t1-t0))
 
   if undirected:
     t0 = time()
     G = G.make_undirected()
     t1 = time()
-    logger.info('Made graph undirected in {}s'.format(t1-t0))
+    print ('Made graph undirected in {}s'.format(t1-t0))
 
   return G 
 
@@ -275,6 +280,14 @@ def from_adjlist_unchecked(adjlist):
         node = row[0]
         neighbors = row[1:]
         G[node] = neighbors
+
+    return G
+
+
+def from_dict(d):
+    G = Graph()
+    for k,v in d.iteritems():
+      G[k] = v
 
     return G
 
