@@ -33,11 +33,6 @@ from numpy import linalg as LA
 import operator
 
 
-logger = logging.getLogger("deepwalk")
-
-LOGFORMAT = "%(asctime).19s %(levelname)s %(filename)s: %(lineno)s %(message)s"
-
-
 class Graph(defaultdict):
   """Efficient basic implementation of nx `Graph' â€“ Undirected graphs with self loops"""  
   def __init__(self):
@@ -68,7 +63,7 @@ class Graph(defaultdict):
           self[other].append(v)
     
     t1 = time()
-    logger.info('make_directed: added missing edges {}s'.format(t1-t0))
+    #logger.info('make_directed: added missing edges {}s'.format(t1-t0))
 
     self.make_consistent()
     return self
@@ -79,7 +74,7 @@ class Graph(defaultdict):
       self[k] = list(sorted(set(self[k])))
     
     t1 = time()
-    logger.info('make_consistent: made consistent in {}s'.format(t1-t0))
+    #logger.info('make_consistent: made consistent in {}s'.format(t1-t0))
 
     self.remove_self_loops()
 
@@ -97,7 +92,7 @@ class Graph(defaultdict):
     
     t1 = time()
 
-    logger.info('remove_self_loops: removed {} loops in {}s'.format(removed, (t1-t0)))
+    #logger.info('remove_self_loops: removed {} loops in {}s'.format(removed, (t1-t0)))
     return self
 
   def check_self_loops(self):
@@ -139,14 +134,12 @@ class Graph(defaultdict):
 
   def printAdjList(self):
     for key,value in self.iteritems():
-      print key,":",value
+      print (key,":",value)
+
 
 
 def clique(size):
     return from_adjlist(permutations(range(1,size+1)))
-
-
-
 
 # http://stackoverflow.com/questions/312443/how-do-you-split-a-list-into-evenly-sized-chunks-in-python
 def grouper(n, iterable, padvalue=None):
